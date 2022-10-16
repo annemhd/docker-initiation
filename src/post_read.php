@@ -2,7 +2,9 @@
 include('auth.php');
 require('db.php');
 
-$id = $_SESSION['id'];
+if (isset($_POST['read'])) {
+    extract($_POST);
+}
 
 ?>
 
@@ -41,11 +43,6 @@ $id = $_SESSION['id'];
         echo '<p style="white-space: pre-line;">' . $data['content'] . '</p>';
         if ($data['author'] == $_SESSION['username']) {
         ?>
-            <form method="POST" action="post_read.php">
-                <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-                <input type="submit" name="read" value="Lire">
-            </form>
-
             <form method="POST" action="post_edit.php">
                 <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
                 <input type="submit" name="edit" value="Editer">

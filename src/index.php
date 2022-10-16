@@ -33,9 +33,9 @@
             }
 
             if ($data['author'] == $_SESSION['username']) {
-
             ?>
         </p>
+
         <form method="POST" action="post_read.php">
             <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
             <input type="submit" name="read" value="Lire">
@@ -50,10 +50,20 @@
             <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
             <input type="submit" name="delete" value="Supprimer">
         </form>
+    <?php
+            } else {
+    ?>
+        <form method="POST" action="post_read.php">
+            <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+            <input type="submit" name="read" value="Lire">
+        </form>
+    <?php
 
-<?php
+
             }
-        }
+    ?>
+<?php
+    }
 ?>
 
 </body>
