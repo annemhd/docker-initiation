@@ -38,7 +38,7 @@ if (isset($_POST['username'])) {
 
 <head>
     <meta charset="utf-8" />
-    <title>Identification</title>
+    <title>Blog - Identification</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 

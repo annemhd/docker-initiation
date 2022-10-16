@@ -34,7 +34,7 @@ if (isset($_REQUEST['username'])) {
 
 <head>
     <meta charset="utf-8" />
-    <title>Inscription</title>
+    <title>Blog - Inscription</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 

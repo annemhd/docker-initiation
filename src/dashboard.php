@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Tableau de bord</title>
+    <title>Blog - Tableau de bord</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -24,12 +24,9 @@
 
     $sql = mysqli_query($con, "SELECT * FROM users INNER JOIN posts ON users.username=posts.author WHERE author = '$author'") or die('Erreur de la requête SQL');
     while ($data = mysqli_fetch_array($sql)) {
-        echo $data['id'] . "<br>";
         $_SESSION['id'] = $data['id'];
         echo $data['title'] . "<br>";
-        echo $data['firstname'] . "<br>";
         echo $data['date'] . "<br>";
-        echo $data['content'] . "<br>";;
         echo '<br>';
 
         if ($data['author'] == $_SESSION['username']) {

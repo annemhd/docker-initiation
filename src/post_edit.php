@@ -14,6 +14,7 @@ if (isset($_POST['update'])) {
         $author = $_POST['author'];
         $title = $_POST['title'];
         $content = $_POST['content'];
+        $content = mysqli_real_escape_string($con, $content);
         $date = $_POST['date'];
         $sql = "UPDATE `posts` SET author='$author', title='$title', content='$content', date='$date' WHERE id = '$id' AND author='$author'";
         if ($con->query($sql) === TRUE) {
@@ -32,7 +33,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blog - Modifier un article</title>
 </head>
 
 <body>
