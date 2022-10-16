@@ -10,7 +10,7 @@ if (isset($_POST['insert'])) {
 
     if ($error == null) {
 
-        if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] == 0) {
+        if (isset($_FILES['screenshot'])) {
             if ($_FILES['screenshot']['size'] <= 2000000) {
                 $fileInfo = pathinfo($_FILES['screenshot']['name']);
                 $extension = $fileInfo['extension'];
@@ -65,8 +65,8 @@ if (isset($_POST['insert'])) {
 
     <div class="text-center">
         <main class="w-50 m-auto" style="max-width: 400px;">
+            <h1 class="h3 mb-3">Ajouter un article</h1>
             <form method="post" action="" enctype="multipart/form-data">
-                <h1 class="h3 mb-3">Ajouter un article</h1>
 
                 <div class="form-floating mb-2">
                     <input type="text" name="title" class="form-control" id="floatingPassword" placeholder="Title">
@@ -75,9 +75,9 @@ if (isset($_POST['insert'])) {
                 <div class=" mb-2">
                     <textarea name="content" class="form-control" placeholder="Écrivez votre article ici"></textarea>
                 </div>
-                <div class=" mb-2">
-                    <input type="file" name="screenshot" class="w-100 btn btn-lg btn-link mb-2">
-                </div>
+
+                <input type="file" name="screenshot" class="w-100 btn btn-lg btn-link mb-2">
+
                 <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>" />
                 <input type="submit" value="Créer l'article" name="insert" class="w-100 btn btn-lg btn-primary mb-2" />
                 <input type="button" onclick="window.history.back()" value="Annuler" class="w-100 btn btn-lg btn-secondary mb-2" />

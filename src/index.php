@@ -44,7 +44,7 @@
             <div class="col">
                 <div class="card h-100">
                     <div style="width:100%;height:350px;overflow:hidden;">
-                        <img src="<?php echo $data['image']; ?>" class="card-img-top img-fluid" alt="...">
+                        <img src="<?php echo $data['image']; ?>" class="card-img-top img-fluid">
                     </div>
                     <div class="card-body d-flex flex-column p-5">
                         <h5 class="card-title mb-3"><?php echo $data['title']; ?></h5>
@@ -71,7 +71,6 @@
                                     <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
                                     <input type="submit" name="edit" value="Editer" class="btn btn-lg btn-primary btn-sm">
                                 </form>
-
                                 <form method="POST" action="post_delete.php" class="d-inline">
                                     <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
                                     <input type="submit" name="delete" value="Supprimer" class="btn btn-lg btn-danger btn-sm">
@@ -82,7 +81,7 @@
 
                             <form method="POST" action="post_read.php">
                                 <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-                                <input type="submit" name="read" value="Lire">
+                                <input type="submit" name="read" value="Lire" class="btn btn-lg btn-primary btn-sm">
                             </form>
 
                         <?php
