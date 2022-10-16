@@ -3,23 +3,27 @@ if (empty(session_id()) && !headers_sent()) {
     session_start();
 }
 require('db.php');
-
+$error = NULL;
 if (isset($_REQUEST['username'])) {
 
-    $error = NULL;
-
     extract($_POST);
+
+    if (empty($username) || empty($firstname) || empty($lastname) || empty($password) || empty($password_confirmation)) {
+        $error = 'Veuillez remplir tous les champs';
+    }
 
     if ($password != $password_confirmation) {
         $error = 'Les deux mots de passe sont différents';
     }
+
     if ($error == null) {
-        $query    = "INSERT into `users` (username, password) VALUES ('$username', '" . md5($password) . "')";
+        $lastname = strtoupper($lastname);
+        $query    = "INSERT into `users` (username, firstname, lastname, password) VALUES ('$username', '$firstname' , '$lastname','" . md5($password) . "')";
         $result   = mysqli_query($con, $query);
         if ($result) {
-            echo "Votre vompte a bien été crée, vous pouvez démormais vous connectez";
+            $error = "Votre vompte a bien été crée, vous pouvez démormais vous connectez";
         } else {
-            echo "Les informations données sont invalides, veuillez recommencer";
+            $error = "Les informations données sont invalides, veuillez recommencer";
         }
     }
 }
@@ -35,13 +39,26 @@ if (isset($_REQUEST['username'])) {
 </head>
 
 <body>
-    <form class="form" action="" method="post">
-        <input type="text" name="username" placeholder="Pseudonyme" required />
-        <input type="password" name="password" placeholder="Mot de passe">
-        <input type="password" name="password_confirmation" placeholder="Confirmation du mot de passe" />
-        <input type="submit" name="submit" value="S'inscrire">
+
+    <?php include('navigation.php'); ?>
+
+    <?php if (!isset($_POST['submit'])) {
+    ?>
+        <form class="form" action="" method="post">
+            <input type="text" name="username" placeholder="Pseudonyme" required />
+            <input type="text" name="firstname" placeholder="Prénom" required />
+            <input type="text" name="lastname" placeholder="Nom" required />
+            <input type="password" name="password" placeholder="Mot de passe">
+            <input type="password" name="password_confirmation" placeholder="Confirmation du mot de passe" />
+            <input type="submit" name="submit" value="S'inscrire">
+        </form>
+    <?php
+    } else {
+        echo $error;
+    ?>
         <input type="button" onclick="location.href='login.php';" value="S'identifier" />
-    </form>
+    <?php
+    } ?>
 </body>
 
 </html>

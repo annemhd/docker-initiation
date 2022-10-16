@@ -16,9 +16,8 @@ if (isset($_POST['update'])) {
         $content = $_POST['content'];
         $date = $_POST['date'];
         $sql = "UPDATE `posts` SET author='$author', title='$title', content='$content', date='$date' WHERE id = '$id' AND author='$author'";
-
         if ($con->query($sql) === TRUE) {
-            header('location:dashboard.php');
+            header('location: dashboard.php');
         } else {
             echo 'Error: ' . $sql . '<br>' . $con->error;
         }

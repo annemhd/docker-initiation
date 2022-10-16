@@ -22,12 +22,12 @@
 
     $author = $_SESSION['username'];
 
-    $sql = mysqli_query($con, "SELECT * FROM posts  WHERE author = '$author'") or die('Erreur de la requête SQL');
+    $sql = mysqli_query($con, "SELECT * FROM users INNER JOIN posts ON users.username=posts.author WHERE author = '$author'") or die('Erreur de la requête SQL');
     while ($data = mysqli_fetch_array($sql)) {
         echo $data['id'] . "<br>";
         $_SESSION['id'] = $data['id'];
         echo $data['title'] . "<br>";
-        echo $data['author'] . "<br>";
+        echo $data['firstname'] . "<br>";
         echo $data['date'] . "<br>";
         echo $data['content'] . "<br>";;
         echo '<br>';

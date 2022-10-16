@@ -11,10 +11,9 @@
 
         } else {
         ?>
-
             <a href="index.php">Acceuil</a>
             <a href="post_add.php">Ajouter un article</a>
-            <a href="dashboard.php">Mon compte</a>
+            <a href="dashboard.php">Tableau de bord</a>
             <a href="logout.php">Déconnexion</a>
 
         <?php

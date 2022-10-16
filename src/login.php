@@ -5,9 +5,9 @@ if (empty(session_id()) && !headers_sent()) {
 
 require('db.php');
 
-if (isset($_POST['username'])) {
+$error = null;
 
-    $error = null;
+if (isset($_POST['username'])) {
 
     extract($_POST);
 
@@ -44,13 +44,14 @@ if (isset($_POST['username'])) {
 
 <body>
 
+    <?php include('navigation.php'); ?>
+
     <form class="form" method="post" name="login">
         <input type="text" name="username" placeholder="Nom d'utilisateur" />
         <input type="password" name="password" placeholder="Mot de passe" />
         <input type="submit" value="S'identifier" name="submit" />
-        <input type="button" onclick="location.href='registration.php';" value="S'inscrire" />
     </form>
-
+    <?php echo $error; ?>
 </body>
 
 </html>
